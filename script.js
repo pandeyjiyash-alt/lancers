@@ -1,16 +1,42 @@
-// Navbar Scroll Logic
-const navbar = document.querySelector('.navbar');
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        navbar.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1)';
-        navbar.style.padding = '0.8rem 0';
-        navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-    } else {
-        navbar.style.boxShadow = 'none';
-        navbar.style.padding = '1.2rem 0';
-        navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
+// Mobile Menu Toggle
+const navToggle = document.querySelector('.nav-toggle');
+const navList = document.querySelector('.nav-list');
+const navLinks = document.querySelectorAll('.nav-link');
+
+if (navToggle) {
+  navToggle.addEventListener('click', () => {
+    navList.classList.toggle('active');
+    navToggle.classList.toggle('active');
+  });
+
+  // Close menu when a link is clicked
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      navList.classList.remove('active');
+      navToggle.classList.remove('active');
+    });
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.header')) {
+      navList.classList.remove('active');
+      navToggle.classList.remove('active');
     }
-});
+  });
+}
+
+// Navbar Scroll Logic
+const navbar = document.querySelector('.header');
+if (navbar) {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1)';
+    } else {
+      navbar.style.boxShadow = 'none';
+    }
+  });
+}
 
 // Team Profiles Data
 const teamProfiles = {
