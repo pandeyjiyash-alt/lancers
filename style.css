@@ -41,6 +41,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 20px;
+  position: relative;
 }
 
 .logo {
@@ -53,10 +54,15 @@ body {
   color: var(--secondary-color);
 }
 
+.nav {
+  position: relative;
+}
+
 .nav-list {
   display: flex;
   list-style: none;
   gap: 2rem;
+  transition: all 0.3s ease;
 }
 
 .nav-link {
@@ -90,15 +96,16 @@ body {
 }
 
 .nav-toggle.active .hamburger:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
+  transform: rotate(45deg) translateY(11px);
 }
 
 .nav-toggle.active .hamburger:nth-child(2) {
   opacity: 0;
+  transform: translateX(-10px);
 }
 
 .nav-toggle.active .hamburger:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
+  transform: rotate(-45deg) translateY(-11px);
 }
 
 /* Hero Section */
@@ -701,6 +708,8 @@ body {
     gap: 0;
     box-shadow: var(--shadow);
     z-index: 999;
+    width: 100%;
+    border-top: 1px solid #e2e8f0;
   }
 
   .nav-list.active {
