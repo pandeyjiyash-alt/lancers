@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Professional freelance software developer portfolio">
+  <title>Freelance Developer Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1 class="logo">Freelancers</h1>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="#team" class="nav-link">Our Team</a></li>
+          <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" aria-label="toggle navigation">
+        <span class="hamburger"></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h2 class="hero-title">Welcome to <span>Freelancers</span></h2>
+          <p class="hero-subtitle">Expert Development Team</p>
+          <p class="hero-text">We are a collective of talented freelance developers specializing in full-stack web development, frontend design, backend engineering, and DevOps solutions.</p>
+          <a href="#team" class="btn">Meet Our Team</a>
+        </div>
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=600&fit=crop&q=80" alt="Developer working on code">
+        </div>
+      </div>
+    </section>
+
+    <section id="team" class="team">
+      <div class="container">
+        <h2 class="section-title">Meet Our Team</h2>
+        <p class="section-subtitle">Experienced freelance developers ready to bring your vision to life</p>
+        <div class="team-grid">
+          <div class="team-card" data-id="1">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&q=80" alt="John Doe">
+            <h3>John Doe</h3>
+            <p class="role">Full Stack Developer</p>
+            <p class="bio">5+ years experience with PHP, Laravel, React</p>
+            <button class="btn-view-profile" onclick="openProfile(1)">View Profile</button>
+          </div>
+
+          <div class="team-card" data-id="2">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&q=80" alt="Sarah Wilson">
+            <h3>Sarah Wilson</h3>
+            <p class="role">Frontend Specialist</p>
+            <p class="bio">4+ years in React, Vue.js, and UI/UX design</p>
+            <button class="btn-view-profile" onclick="openProfile(2)">View Profile</button>
+          </div>
+
+          <div class="team-card" data-id="3">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&q=80" alt="Mike Chen">
+            <h3>Mike Chen</h3>
+            <p class="role">Backend Engineer</p>
+            <p class="bio">6+ years in Python, Django, AWS infrastructure</p>
+            <button class="btn-view-profile" onclick="openProfile(3)">View Profile</button>
+          </div>
+
+          <!-- <div class="team-card" data-id="4">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&q=80" alt="Emma Garcia">
+            <h3>Emma Garcia</h3>
+            <p class="role">DevOps Specialist</p>
+            <p class="bio">3+ years in Docker, Kubernetes, CI/CD pipelines</p>
+            <button class="btn-view-profile" onclick="openProfile(4)">View Profile</button>
+          </div> -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Profile Modal -->
+    <div id="profileModal" class="modal">
+      <div class="modal-content">
+        <button class="close-modal" onclick="closeProfile()">&times;</button>
+        <div class="profile-header">
+          <img id="profileImage" src="" alt="Profile">
+          <div class="profile-info">
+            <h1 id="profileName"></h1>
+            <p id="profileRole" class="profile-role"></p>
+          </div>
+        </div>
+        <div class="profile-body">
+          <div class="profile-section">
+            <h3>About</h3>
+            <p id="profileAbout"></p>
+          </div>
+          <div class="profile-section">
+            <h3>Skills & Expertise</h3>
+            <div id="profileSkills" class="skills-list"></div>
+          </div>
+          <div class="profile-section">
+            <h3>Experience</h3>
+            <p id="profileExperience"></p>
+          </div>
+          <div class="profile-section">
+            <h3>Hourly Rate</h3>
+            <p id="profileRate" class="rate"></p>
+          </div>
+          <div class="profile-cta">
+            <button class="btn-hire" onclick="hireFreelancer()">💼 Hire Now</button>
+            <button class="btn-contact" onclick="scrollToContact()">📧 Contact</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="about" class="about">
+      <div class="container">
+        <h2 class="section-title">About Our Team</h2>
+        <div class="about-content">
+          <div class="about-text">
+            <p>We are a collective of passionate developers with diverse expertise and combined experience of over 20+ years in software development. Our collective expertise includes:</p>
+            <ul>
+              <li>PHP and Laravel for backend development</li>
+              <li>Python and Django for web applications</li>
+              <li>JavaScript frameworks like React and Next.js</li>
+              <li>Database management with SQL and NoSQL solutions</li>
+            </ul>
+            <p>I'm passionate about creating efficient, scalable solutions that solve real-world problems.</p>
+          </div>
+          <div class="about-image">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop&q=80" alt="Developer team working together">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="skills">
+      <div class="container">
+        <h2 class="section-title">Our Expertise</h2>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <h3>Backend Development</h3>
+            <ul>
+              <li>PHP</li>
+              <li>Laravel</li>
+              <li>Python</li>
+              <li>Django</li>
+            </ul>
+          </div>
+          <div class="skill-card">
+            <h3>Frontend Development</h3>
+            <ul>
+              <li>HTML/CSS</li>
+              <li>JavaScript</li>
+              <li>React</li>
+              <li>Next.js</li>
+            </ul>
+          </div>
+          <div class="skill-card">
+            <h3>Databases</h3>
+            <ul>
+              <li>MySQL</li>
+              <li>PostgreSQL</li>
+              <li>MongoDB</li>
+              <li>SQLite</li>
+            </ul>
+          </div>
+          <div class="skill-card">
+            <h3>DevOps</h3>
+            <ul>
+              <li>Docker</li>
+              <li>AWS</li>
+              <li>Git</li>
+              <li>CI/CD</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="projects">
+      <div class="container">
+        <h2 class="section-title">Our Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop&q=80" alt="E-commerce platform">
+            <h3>E-commerce Platform</h3>
+            <p>Built with Laravel and Vue.js</p>
+          </div>
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop&q=80" alt="Social media app">
+            <h3>Social Media App</h3>
+            <p>Developed with Django and React</p>
+          </div>
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&q=80" alt="Task management system">
+            <h3>Task Management System</h3>
+            <p>Created with Next.js and Node.js</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <form class="contact-form">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 Freelancers - Team of Expert Developers. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
