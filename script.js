@@ -2,28 +2,49 @@
 const navToggle = document.querySelector('.nav-toggle');
 const navList = document.querySelector('.nav-list');
 const navLinks = document.querySelectorAll('.nav-link');
+const smoothScrollLinks = document.querySelectorAll('[data-target]');
 
-if (navToggle) {
-  navToggle.addEventListener('click', () => {
+if (navToggle && navList) {
+  console.log('Mobile menu toggle initialized');
+  
+  navToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    console.log('Toggle clicked');
     navList.classList.toggle('active');
     navToggle.classList.toggle('active');
   });
 
-  // Close menu when a link is clicked
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      navList.classList.remove('active');
-      navToggle.classList.remove('active');
+  smoothScrollLinks.forEach(link => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      const targetId = link.dataset.target;
+      const targetSection = document.getElementById(targetId);
+      if (!targetSection) return;
+
+      targetSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+
+      history.replaceState(null, '', window.location.pathname + window.location.search);
+
+      if (navList.classList.contains('active')) {
+        navList.classList.remove('active');
+        navToggle.classList.remove('active');
+      }
     });
   });
 
   // Close menu when clicking outside
   document.addEventListener('click', (e) => {
-    if (!e.target.closest('.header')) {
+    if (!e.target.closest('.header') && navList.classList.contains('active')) {
+      console.log('Clicked outside, closing menu');
       navList.classList.remove('active');
       navToggle.classList.remove('active');
     }
   });
+} else {
+  console.log('navToggle or navList not found');
 }
 
 // Navbar Scroll Logic
@@ -78,83 +99,71 @@ const teamProfiles = {
   }
 };
 
-// Open Profile Modal
-function openProfile(id) {
-  const profile = teamProfiles[id];
-  if (!profile) return;
-  
-  document.getElementById('profileImage').src = profile.image;
-  document.getElementById('profileName').textContent = profile.name;
-  document.getElementById('profileRole').textContent = profile.role;
-  document.getElementById('profileAbout').textContent = profile.about;
-  document.getElementById('profileExperience').textContent = profile.experience;
-  document.getElementById('profileRate').textContent = profile.rate;
-  
-  // Display skills
-  const skillsContainer = document.getElementById('profileSkills');
-  skillsContainer.innerHTML = profile.skills.map(skill => `<span>${skill}</span>`).join('');
-  
-  document.getElementById('profileModal').style.display = 'block';
-  document.body.style.overflow = 'hidden';
-}
+// Removed openProfile, closeProfile, hireFreelancer, scrollToContact functions
 
-// Close Profile Modal
-function closeProfile() {
-  document.getElementById('profileModal').style.display = 'none';
-  document.body.style.overflow = 'auto';
-}
+// Supabase setup - replace with your own project values
+const supabaseUrl = 'https://ujcqwbkxbkvastfkbxas.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVqY3F3Ymt4Ymt2YXN0ZmtieGFzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgwNDY1ODQsImV4cCI6MjA5MzYyMjU4NH0.5PhXC8QKIrAxMXg9uMHufPIb2EtULINLsway4IHu3qQ';
+const supabaseNotifyFunction = 'notify-contact'; // Optional Supabase Edge Function for email alerts
+const supabaseClient = window.supabase ? supabase.createClient(supabaseUrl, supabaseKey) : null;
 
-// Hire Freelancer
-function hireFreelancer() {
-  alert('Thank you for your interest! Please fill out the contact form below.');
-  closeProfile();
-}
-
-// Scroll to Contact Section
-function scrollToContact() {
-  closeProfile();
-  const contactSection = document.getElementById('contact');
-  setTimeout(() => {
-    contactSection.scrollIntoView({ behavior: 'smooth' });
-  }, 300);
-}
-
-// Close modal when clicking outside
-window.onclick = function(event) {
-  const modal = document.getElementById('profileModal');
-  if (event.target === modal) {
-    closeProfile();
+async function submitContact(payload) {
+  if (!supabaseClient) {
+    return { error: new Error('Supabase client is not initialized. Update your Supabase URL and anon key.') };
   }
-}
 
-// Mobile Menu Toggle (Simplified)
-const mobileMenu = document.getElementById('mobile-menu');
-if (mobileMenu) {
-    mobileMenu.addEventListener('click', () => {
-        alert('Menu functionality would open a mobile-specific drawer here.');
+  const { data, error } = await supabaseClient
+    .from('contacts')
+    .insert([{ ...payload, source: window.location.pathname, created_at: new Date().toISOString() }]);
+
+  if (error) {
+    return { error };
+  }
+
+  if (supabaseNotifyFunction) {
+    const { error: notifyError } = await supabaseClient.functions.invoke(supabaseNotifyFunction, {
+      body: JSON.stringify({
+        subject: 'New contact submission',
+        payload: { ...payload, source: window.location.pathname }
+      })
     });
+
+    if (notifyError) {
+      console.warn('Supabase email notification function failed:', notifyError);
+    }
+  }
+
+  return { data };
 }
 
 // Contact Form Handling
-const contactForm = document.getElementById('contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const btn = contactForm.querySelector('button');
-        const originalText = btn.innerText;
-        
-        btn.innerText = 'Sending...';
-        btn.disabled = true;
-        
-        // Simulate Success
-        setTimeout(() => {
-            alert('Thanks for reaching out! I will get back to you soon.');
-            btn.innerText = originalText;
-            btn.disabled = false;
-            contactForm.reset();
-        }, 1500);
-    });
-}
+const contactForms = document.querySelectorAll('.contact-form-banner, #mainContactForm');
+contactForms.forEach(form => {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('button');
+    const originalText = btn.innerText;
+
+    btn.innerText = 'Sending...';
+    btn.disabled = true;
+
+    const formData = new FormData(form);
+    const payload = Object.fromEntries(formData.entries());
+
+    const { error } = await submitContact(payload);
+
+    if (error) {
+      alert('Something went wrong while sending your message. Please try again.');
+      console.error(error);
+    } else {
+      alert('Thank you! Your message has been sent successfully.');
+      form.reset();
+    }
+
+    btn.innerText = originalText;
+    btn.disabled = false;
+  });
+});
 
 // Reveal animations on scroll using Intersection Observer
 const observerOptions = {
