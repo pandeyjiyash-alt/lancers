@@ -33,10 +33,11 @@
     <section id="home" class="hero">
       <div class="container">
         <div class="hero-content">
+          <p class="eyebrow">Premium freelance development</p>
           <h2 class="hero-title">Welcome to <span>Vantade</span></h2>
-          <p class="hero-subtitle">Expert Development Team</p>
-          <p class="hero-text">We are a collective of talented freelance developers specializing in full-stack web development, frontend design, backend engineering, and DevOps solutions.</p>
-          <a href="#services" class="btn" data-target="services">Explore Services</a>
+          <p class="hero-subtitle">A growth-driven digital studio for ambitious brands.</p>
+          <p class="hero-text">We launch high-performance web applications, SaaS products, and conversion-first digital experiences for startups, agencies, and enterprise teams. From strategy to delivery, our work is built to win customers, reduce churn, and scale fast.</p>
+          <a href="#contact" class="btn" data-target="contact">Get In Touch</a>
         </div>
         <div class="hero-image">
           <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=600&fit=crop&q=80" alt="Developer working on code">
@@ -44,76 +45,118 @@
       </div>
     </section>
 
-    <!-- Contact Banner -->
-    <section class="contact-banner">
+    <section class="why-vantade">
       <div class="container">
-        <h2>Get In Touch</h2>
-        <form class="contact-form-banner" id="contactForm">
-          <div class="form-row inline-row">
-            <input type="text" name="name" placeholder="Name *" required>
-            <input type="tel" name="mobile" placeholder="Mobile Number *" required>
-            <input type="email" name="email" placeholder="Email (Optional)">
-            <select name="technology" required>
-              <option value="">Select Technology *</option>
-              <option value="php">PHP/Laravel</option>
-              <option value="python">Python/Django</option>
-              <option value="react">React/Next.js</option>
-              <option value="vue">Vue.js</option>
-              <option value="nodejs">Node.js</option>
-              <option value="devops">DevOps/AWS</option>
-              <option value="other">Other</option>
-            </select>
-            <button type="submit" class="btn">Submit</button>
+        <h2 class="section-title">Why Choose Vantade</h2>
+        <div class="why-grid">
+          <div class="why-card">
+            <div class="why-icon">⚡</div>
+            <h3>20+ Years Industry Experience</h3>
+            <p>Our team combines decades of expertise in digital transformation, helping enterprises modernize and stay competitive in rapidly evolving markets.</p>
           </div>
-        </form>
-      </div>
-    </section>
-
-    <section id="services" class="projects">
-      <div class="container">
-        <h2 class="section-title">Services</h2>
-        <div class="projects-grid">
-          <div class="project-card">
-            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop&q=80" alt="E-commerce platform">
-            <h3>E-commerce Platform</h3>
-            <p>Built with Laravel and Vue.js</p>
+          <div class="why-card">
+            <div class="why-icon">🤖</div>
+            <h3>AI-Powered Tech Innovation</h3>
+            <p>We engineer enterprise-scale AI and automation solutions that streamline complex operations, boost productivity, and deliver measurable ROI for global leaders.</p>
           </div>
-          <div class="project-card">
-            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop&q=80" alt="Social media app">
-            <h3>Social Media App</h3>
-            <p>Developed with Django and React</p>
-          </div>
-          <div class="project-card">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&q=80" alt="Task management system">
-            <h3>Task Management System</h3>
-            <p>Created with Next.js and Node.js</p>
+          <div class="why-card">
+            <div class="why-icon">📊</div>
+            <h3>Real-World Success Stories</h3>
+            <p>We achieve tangible business impacts through scalable, secure solutions that help our clients innovate faster, reduce costs, and unlock new revenue streams.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Contact Banner -->
     <section class="contact-banner">
+      <div class="container contact-grid">
+        <div class="contact-copy">
+          <p class="eyebrow">Get In Touch</p>
+          <h2>Start your next product with a freelance team that delivers speed, polish, and measurable results.</h2>
+          <p>Vantade works with founders, product leaders, and growth teams to build digital platforms that attract customers, improve retention, and accelerate revenue. We combine technical depth with business-led product design.</p>
+          <ul>
+            <li>Fast MVP delivery for early-stage launches</li>
+            <li>Enterprise-grade architecture and secure APIs</li>
+            <li>Conversion-focused UI, onboarding, and analytics</li>
+            <li>Remote collaboration with transparent delivery rhythms</li>
+          </ul>
+        </div>
+        <div class="contact-form-banner">
+          <form id="contactForm">
+            <div class="form-row inline-row">
+              <input type="text" name="name" placeholder="Name *" required>
+              <input type="tel" name="mobile" placeholder="Mobile Number *" required>
+              <input type="email" name="email" placeholder="Email (Optional)">
+              <select name="technology" required>
+                <option value="">Select Technology *</option>
+                <option value="php">PHP/Laravel</option>
+                <option value="python">Python/Django</option>
+                <option value="react">React/Next.js</option>
+                <option value="vue">Vue.js</option>
+                <option value="nodejs">Node.js</option>
+                <option value="devops">DevOps/AWS</option>
+                <option value="other">Other</option>
+              </select>
+              <button type="submit" class="btn">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="projects">
       <div class="container">
-        <h2>Ready to Start Your Project?</h2>
-        <form class="contact-form-banner" id="contactForm2">
-          <div class="form-row inline-row">
-            <input type="text" name="name" placeholder="Name *" required>
-            <input type="tel" name="mobile" placeholder="Mobile Number *" required>
-            <input type="email" name="email" placeholder="Email (Optional)">
-            <select name="technology" required>
-              <option value="">Select Technology *</option>
-              <option value="php">PHP/Laravel</option>
-              <option value="python">Python/Django</option>
-              <option value="react">React/Next.js</option>
-              <option value="vue">Vue.js</option>
-              <option value="nodejs">Node.js</option>
-              <option value="devops">DevOps/AWS</option>
-              <option value="other">Other</option>
-            </select>
-            <button type="submit" class="btn">Submit</button>
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=800&h=600&fit=crop&q=80" alt="Startup marketplace platform">
+            <h3>Marketplace Launchpad</h3>
+            <p class="project-description">Designed and delivered a scalable marketplace platform with secure vendor onboarding, subscription billing, and real-time analytics. The launch-ready product boosted early conversion and simplified operations for the founding team.</p>
           </div>
-        </form>
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?w=800&h=600&fit=crop&q=80" alt="SaaS analytics dashboard">
+            <h3>SaaS Growth Dashboard</h3>
+            <p class="project-description">Built an analytics workspace for product teams featuring customer lifecycle tracking, automated reporting, and KPI-driven funnels. The platform helped clients make data-backed decisions faster and improve retention.</p>
+          </div>
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=600&fit=crop&q=80" alt="Enterprise web portal">
+            <h3>Enterprise Client Portal</h3>
+            <p class="project-description">Developed a secure client portal with role-based access, custom workflows, and integrations to payment, CRM, and support systems. The result is a polished experience that accelerates onboarding and customer success.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="partners">
+      <div class="container">
+        <h2 class="section-title">Our Partners & Clients</h2>
+        <p class="section-subtitle">Trusted by leading companies and innovative startups worldwide</p>
+        <div class="partners-grid">
+          <div class="partner-logo">
+            <div class="logo-placeholder">TechCorp</div>
+            <p>Enterprise Solutions</p>
+          </div>
+          <div class="partner-logo">
+            <div class="logo-placeholder">CloudSys</div>
+            <p>Cloud Infrastructure</p>
+          </div>
+          <div class="partner-logo">
+            <div class="logo-placeholder">DataFlow</div>
+            <p>Big Data Analytics</p>
+          </div>
+          <div class="partner-logo">
+            <div class="logo-placeholder">FinScale</div>
+            <p>Financial Services</p>
+          </div>
+          <div class="partner-logo">
+            <div class="logo-placeholder">MediConnect</div>
+            <p>Healthcare Tech</p>
+          </div>
+          <div class="partner-logo">
+            <div class="logo-placeholder">RetailX</div>
+            <p>E-commerce Platform</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -161,74 +204,24 @@
       </div>
     </section>
 
-    <!-- Contact Banner -->
-    <section class="contact-banner">
-      <div class="container">
-        <h2>Have Questions? Contact Us</h2>
-        <form class="contact-form-banner" id="contactForm3">
-          <div class="form-row inline-row">
-            <input type="text" name="name" placeholder="Name *" required>
-            <input type="tel" name="mobile" placeholder="Mobile Number *" required>
-            <input type="email" name="email" placeholder="Email (Optional)">
-            <select name="technology" required>
-              <option value="">Select Technology *</option>
-              <option value="php">PHP/Laravel</option>
-              <option value="python">Python/Django</option>
-              <option value="react">React/Next.js</option>
-              <option value="vue">Vue.js</option>
-              <option value="nodejs">Node.js</option>
-              <option value="devops">DevOps/AWS</option>
-              <option value="other">Other</option>
-            </select>
-            <button type="submit" class="btn">Submit</button>
-          </div>
-        </form>
-      </div>
-    </section>
-
     <section id="about" class="about">
       <div class="container">
-        <h2 class="section-title">About Us</h2>
+        <h2 class="section-title">About Vantade</h2>
         <div class="about-content">
           <div class="about-text">
-            <p>We are a collective of passionate developers with diverse expertise and combined experience of over 20+ years in software development. Our collective expertise includes:</p>
+            <p>Vantade is a freelance technology studio built for ambitious clients who need product velocity, polished design, and measurable business impact. We work as an extension of your team to build digital products that convert users into customers and scale with confidence.</p>
+            <p>Our process blends product strategy, UX-led design, and engineering excellence. We specialize in launching web applications, SaaS products, marketplaces, and mission-critical dashboards with clear ROI.</p>
             <ul>
-              <li>PHP and Laravel for backend development</li>
-              <li>Python and Django for web applications</li>
-              <li>JavaScript frameworks like React and Next.js</li>
-              <li>Database management with SQL and NoSQL solutions</li>
+              <li>Product planning for growth, retention, and market fit</li>
+              <li>Production-ready frontend and backend architecture</li>
+              <li>Modern UI systems with performance, accessibility, and branding</li>
+              <li>Cloud automation, integrations, and secure launch operations</li>
             </ul>
-            <p>I'm passionate about creating efficient, scalable solutions that solve real-world problems.</p>
           </div>
           <div class="about-image">
             <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop&q=80" alt="Developer team working together">
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Contact Banner -->
-    <section class="contact-banner">
-      <div class="container">
-        <h2>Let's Build Something Great</h2>
-        <form class="contact-form-banner" id="contactForm4">
-          <div class="form-row inline-row">
-            <input type="text" name="name" placeholder="Name *" required>
-            <input type="tel" name="mobile" placeholder="Mobile Number *" required>
-            <input type="email" name="email" placeholder="Email (Optional)">
-            <select name="technology" required>
-              <option value="">Select Technology *</option>
-              <option value="php">PHP/Laravel</option>
-              <option value="python">Python/Django</option>
-              <option value="react">React/Next.js</option>
-              <option value="vue">Vue.js</option>
-              <option value="nodejs">Node.js</option>
-              <option value="devops">DevOps/AWS</option>
-              <option value="other">Other</option>
-            </select>
-            <button type="submit" class="btn">Submit</button>
-          </div>
-        </form>
       </div>
     </section>
 
@@ -243,14 +236,12 @@
             <p class="role">Full Stack Developer</p>
             <p class="bio">5+ years experience with PHP, Laravel, React</p>
           </div>
-
           <div class="team-card" data-id="2">
             <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&q=80" alt="Sarah Wilson">
             <h3>Sarah Wilson</h3>
             <p class="role">Frontend Specialist</p>
             <p class="bio">4+ years in React, Vue.js, and UI/UX design</p>
           </div>
-
           <div class="team-card" data-id="3">
             <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&q=80" alt="Mike Chen">
             <h3>Mike Chen</h3>
@@ -259,30 +250,128 @@
           </div>
         </div>
       </div>
+
+      <div class="modal profile-modal" id="profileModal" aria-hidden="true">
+        <div class="modal-content">
+          <button class="close-modal" type="button" aria-label="Close profile">&times;</button>
+          <div class="profile-header">
+            <img class="modal-avatar" src="" alt="Profile image">
+            <h3 class="modal-name"></h3>
+            <p class="modal-role"></p>
+          </div>
+          <div class="profile-body">
+            <p class="modal-about"></p>
+            <div class="modal-row">
+              <div>
+                <h4>Core strengths</h4>
+                <ul class="modal-skills"></ul>
+              </div>
+              <div>
+                <h4>Experience</h4>
+                <p class="modal-experience"></p>
+              </div>
+            </div>
+            <div class="modal-meta">
+              <span>Rate: <strong class="modal-rate"></strong></span>
+              <span>Availability: <strong>Remote, fast response</strong></span>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Contact Banner -->
-    <section class="contact-banner">
+    <section class="faq">
       <div class="container">
-        <h2>Contact Us Today</h2>
-        <form class="contact-form-banner" id="contactForm5">
-          <div class="form-row inline-row">
-            <input type="text" name="name" placeholder="Name *" required>
-            <input type="tel" name="mobile" placeholder="Mobile Number *" required>
-            <input type="email" name="email" placeholder="Email (Optional)">
-            <select name="technology" required>
-              <option value="">Select Technology *</option>
-              <option value="php">PHP/Laravel</option>
-              <option value="python">Python/Django</option>
-              <option value="react">React/Next.js</option>
-              <option value="vue">Vue.js</option>
-              <option value="nodejs">Node.js</option>
-              <option value="devops">DevOps/AWS</option>
-              <option value="other">Other</option>
-            </select>
-            <button type="submit" class="btn">Submit</button>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="faq-grid">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What services does Vantade provide?</span>
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Vantade specializes in web application development, SaaS platforms, custom dashboards, mobile apps, API design, cloud infrastructure, and DevOps solutions. We tailor our services to meet your specific business needs.</p>
+            </div>
           </div>
-        </form>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How long does a typical project take?</span>
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Project timelines vary based on scope and complexity. MVP development typically takes 6-12 weeks, while enterprise solutions may take 3-6 months. We provide detailed estimates after understanding your requirements.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Do you work with distributed teams?</span>
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Yes, we are a fully remote team and collaborate seamlessly with clients worldwide. We use modern communication tools and maintain transparent delivery rhythms with regular updates and demos.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What technologies do you specialize in?</span>
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>We work with React, Next.js, Vue.js, Python, Django, PHP, Laravel, Node.js, AWS, Docker, Kubernetes, PostgreSQL, MongoDB, and more. Our team adapts to your tech stack requirements.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How do you ensure code quality and security?</span>
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>We follow industry best practices including code reviews, automated testing, security audits, OWASP compliance, and continuous integration/deployment. Quality assurance is embedded in every project phase.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What is your support and maintenance process?</span>
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>We offer post-launch support, bug fixes, performance optimization, and feature enhancements. Custom support plans are available based on your needs and requirements.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="connect">
+      <div class="container">
+        <h2 class="section-title">Connect With Vantade</h2>
+        <p class="section-subtitle">Follow us for industry insights, tech trends, and project updates</p>
+        <div class="social-links">
+          <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-btn">
+            <span class="social-icon">💼</span>
+            <span>LinkedIn</span>
+          </a>
+          <a href="https://twitter.com" target="_blank" rel="noopener" class="social-btn">
+            <span class="social-icon">𝕏</span>
+            <span>Twitter</span>
+          </a>
+          <a href="https://github.com" target="_blank" rel="noopener" class="social-btn">
+            <span class="social-icon">💻</span>
+            <span>GitHub</span>
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener" class="social-btn">
+            <span class="social-icon">📸</span>
+            <span>Instagram</span>
+          </a>
+          <a href="https://facebook.com" target="_blank" rel="noopener" class="social-btn">
+            <span class="social-icon">f</span>
+            <span>Facebook</span>
+          </a>
+          <a href="https://youtube.com" target="_blank" rel="noopener" class="social-btn">
+            <span class="social-icon">▶</span>
+            <span>YouTube</span>
+          </a>
+        </div>
       </div>
     </section>
 
