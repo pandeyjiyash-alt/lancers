@@ -99,7 +99,62 @@ const teamProfiles = {
   }
 };
 
-// Removed openProfile, closeProfile, hireFreelancer, scrollToContact functions
+const profileModal = document.getElementById('profileModal');
+const modalAvatar = document.querySelector('.modal-avatar');
+const modalName = document.querySelector('.modal-name');
+const modalRole = document.querySelector('.modal-role');
+const modalAbout = document.querySelector('.modal-about');
+const modalSkills = document.querySelector('.modal-skills');
+const modalExperience = document.querySelector('.modal-experience');
+const modalRate = document.querySelector('.modal-rate');
+const modalClose = document.querySelector('.close-modal');
+
+function openProfile(profileId) {
+  const profile = teamProfiles[profileId];
+  if (!profile || !profileModal) return;
+
+  modalAvatar.src = profile.image;
+  modalAvatar.alt = profile.name;
+  modalName.textContent = profile.name;
+  modalRole.textContent = profile.role;
+  modalAbout.textContent = profile.about;
+  modalSkills.innerHTML = profile.skills.map(skill => `<li>${skill}</li>`).join('');
+  modalExperience.textContent = profile.experience;
+  modalRate.textContent = profile.rate;
+
+  profileModal.style.display = 'block';
+  profileModal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeProfile() {
+  if (!profileModal) return;
+  profileModal.style.display = 'none';
+  profileModal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.team-card').forEach(card => {
+  card.addEventListener('click', () => openProfile(card.dataset.id));
+});
+
+if (modalClose) {
+  modalClose.addEventListener('click', closeProfile);
+}
+
+if (profileModal) {
+  profileModal.addEventListener('click', (event) => {
+    if (event.target === profileModal) {
+      closeProfile();
+    }
+  });
+}
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && profileModal && profileModal.style.display === 'block') {
+    closeProfile();
+  }
+});
 
 // Supabase setup - replace with your own project values
 const supabaseUrl = 'https://ujcqwbkxbkvastfkbxas.supabase.co';
@@ -180,7 +235,7 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Add animation classes and observe
-document.querySelectorAll('.project-card, .service-item, .stat-card, .hero-content').forEach(el => {
+document.querySelectorAll('.project-card, .team-card, .hero-content').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
     el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
@@ -196,3 +251,18 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// FAQ Toggle Functionality
+const faqItems = document.querySelectorAll('.faq-item');
+faqItems.forEach(item => {
+  const question = item.querySelector('.faq-question');
+  if (question) {
+    question.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+      faqItems.forEach(faq => faq.classList.remove('active'));
+      if (!isActive) {
+        item.classList.add('active');
+      }
+    });
+  }
+});
