@@ -3,25 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Professional software development portfolio for Vantade">
-  <title>Vantade Portfolio</title>
+  <meta name="description" content="Vantade — Premium digital studio building high-performance web apps, SaaS products, and AI solutions for ambitious brands worldwide.">
+  <meta property="og:title" content="Vantade — Premium Digital Studio">
+  <meta property="og:description" content="We launch high-performance web applications, SaaS products, and conversion-first digital experiences for startups, agencies, and enterprise teams.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Vantade — Premium Digital Studio</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Vantade",
+    "description": "Premium digital studio building high-performance web apps, SaaS products, and AI solutions.",
+    "serviceType": ["Web Development", "AI Solutions", "Cloud Architecture", "UI/UX Design"],
+    "areaServed": "Worldwide"
+  }
+  </script>
 </head>
 <body>
   <header class="header">
     <div class="container">
-      <h1 class="logo">Vantade</h1>
-      <nav class="nav">
+      <a href="index.html" class="logo">Vantade</a>
+      <nav class="nav" aria-label="Main navigation">
         <ul class="nav-list">
           <li class="nav-item"><a href="#home" class="nav-link" data-target="home">Home</a></li>
-          <li class="nav-item"><a href="#services" class="nav-link" data-target="services">Services</a></li>
-          <li class="nav-item"><a href="#technology" class="nav-link" data-target="technology">Technology</a></li>
-          <li class="nav-item"><a href="#about" class="nav-link" data-target="about">About Us</a></li>
+          <li class="nav-item"><a href="solutions.html" class="nav-link">Services</a></li>
+          <li class="nav-item"><a href="technology.html" class="nav-link">Technology</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
           <li class="nav-item"><a href="#team" class="nav-link" data-target="team">Our Team</a></li>
-          <li class="nav-item"><a href="#contact" class="nav-link" data-target="contact">Contact</a></li>
+          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
         </ul>
       </nav>
-      <button class="nav-toggle" aria-label="toggle navigation">
+      <a href="#contact" class="btn btn-sm" data-target="contact">Contact Us</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span class="hamburger"></span>
         <span class="hamburger"></span>
         <span class="hamburger"></span>
@@ -30,21 +46,71 @@
   </header>
 
   <main>
+    <!-- Hero Section -->
     <section id="home" class="hero">
       <div class="container">
         <div class="hero-content">
-          <p class="eyebrow">Premium freelance development</p>
-          <h2 class="hero-title">Welcome to <span>Vantade</span></h2>
+          <span class="hero-badge">✦ Premium Digital Studio</span>
+          <h1 class="hero-title">We Build Digital<br><span class="hero-highlight">Products That Win</span></h1>
           <p class="hero-subtitle">A growth-driven digital studio for ambitious brands.</p>
           <p class="hero-text">We launch high-performance web applications, SaaS products, and conversion-first digital experiences for startups, agencies, and enterprise teams. From strategy to delivery, our work is built to win customers, reduce churn, and scale fast.</p>
-          <a href="#contact" class="btn" data-target="contact">Get In Touch</a>
+          <div class="hero-actions">
+            <a href="#contact" class="btn" data-target="contact">Contact Us</a>
+            <a href="#services" class="btn btn-outline" data-target="services">View Our Work</a>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <span class="hero-stat-num">150+</span>
+              <span class="hero-stat-label">Projects Delivered</span>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat-num">40+</span>
+              <span class="hero-stat-label">Happy Clients</span>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat-num">4.9★</span>
+              <span class="hero-stat-label">Avg. Rating</span>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat-num">8yr+</span>
+              <span class="hero-stat-label">Experience</span>
+            </div>
+          </div>
         </div>
-        <div class="hero-image">
-          <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=600&fit=crop&q=80" alt="Developer working on code">
+        <div class="hero-image-wrap">
+          <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=600&fit=crop&q=80" alt="Vantade team working on digital products" class="hero-img">
+          <div class="hero-float-card hero-float-card--a">
+            <span class="float-icon">🚀</span>
+            <div>
+              <strong>Fast Delivery</strong>
+              <span>MVP in 6 weeks</span>
+            </div>
+          </div>
+          <div class="hero-float-card hero-float-card--b">
+            <span class="float-icon">⭐</span>
+            <div>
+              <strong>Top Rated</strong>
+              <span>4.9 / 5 client score</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- Hero Quick Contact Strip -->
+    <section class="hero-quick-contact">
+      <div class="container">
+        <p class="hero-quick-label">Get a free consultation — tell us about your project</p>
+        <form id="heroQuickForm" class="hero-quick-form">
+          <input type="text" name="name" placeholder="Your Name *" required>
+          <input type="email" name="email" placeholder="Email Address *" required>
+          <input type="text" name="message" placeholder="Project in a sentence…">
+          <button type="submit" class="btn">Get Quote</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Why Vantade -->
     <section class="why-vantade">
       <div class="container">
         <h2 class="section-title">Why Choose Vantade</h2>
@@ -52,7 +118,7 @@
           <div class="why-card">
             <div class="why-icon">⚡</div>
             <h3>20+ Years Industry Experience</h3>
-            <p>Our team combines decades of expertise in digital transformation, helping enterprises modernize and stay competitive in rapidly evolving markets.</p>
+            <p>Our team combines decades of expertise in digital transformation, helping enterprises modernise and stay competitive in rapidly evolving markets.</p>
           </div>
           <div class="why-card">
             <div class="why-icon">🤖</div>
@@ -68,11 +134,12 @@
       </div>
     </section>
 
+    <!-- Contact Banner -->
     <section class="contact-banner">
       <div class="container contact-grid">
         <div class="contact-copy">
           <p class="eyebrow">Get In Touch</p>
-          <h2>Start your next product with a freelance team that delivers speed, polish, and measurable results.</h2>
+          <h2>Start your next product with a team that delivers speed, polish, and measurable results.</h2>
           <p>Vantade works with founders, product leaders, and growth teams to build digital platforms that attract customers, improve retention, and accelerate revenue. We combine technical depth with business-led product design.</p>
           <ul>
             <li>Fast MVP delivery for early-stage launches</li>
@@ -89,12 +156,13 @@
               <input type="email" name="email" placeholder="Email (Optional)">
               <select name="technology" required>
                 <option value="">Select Technology *</option>
-                <option value="php">PHP/Laravel</option>
-                <option value="python">Python/Django</option>
-                <option value="react">React/Next.js</option>
+                <option value="php">PHP / Laravel</option>
+                <option value="python">Python / Django</option>
+                <option value="react">React / Next.js</option>
                 <option value="vue">Vue.js</option>
                 <option value="nodejs">Node.js</option>
-                <option value="devops">DevOps/AWS</option>
+                <option value="devops">DevOps / AWS</option>
+                <option value="ai">AI / ML</option>
                 <option value="other">Other</option>
               </select>
               <button type="submit" class="btn">Submit</button>
@@ -104,7 +172,91 @@
       </div>
     </section>
 
-    <section id="services" class="projects">
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+      <div class="container">
+        <span class="section-badge">What We Do</span>
+        <h2 class="section-title">Our Core Services</h2>
+        <p class="section-subtitle">End-to-end digital solutions engineered for performance, scalability, and measurable business growth</p>
+        <div class="services-grid-v2">
+          <div class="service-card-v2 svc-teal">
+            <div class="service-icon-wrap"><span>🌐</span></div>
+            <h3>Web Application Development</h3>
+            <p>We architect and build production-grade web apps — from complex SaaS platforms to enterprise portals — using modern stacks with clean, maintainable code.</p>
+            <ul class="service-features">
+              <li>Custom SaaS &amp; marketplace platforms</li>
+              <li>Real-time dashboards &amp; analytics</li>
+              <li>Secure auth, roles, and billing</li>
+              <li>API-first, scalable architecture</li>
+            </ul>
+            <a href="solutions.html" class="service-link">Explore &rarr;</a>
+          </div>
+          <div class="service-card-v2 svc-purple">
+            <div class="service-icon-wrap"><span>🤖</span></div>
+            <h3>AI &amp; Machine Learning</h3>
+            <p>We integrate AI into your products with purpose — chatbots, recommendation engines, predictive analytics, and LLM-powered workflows that generate real ROI.</p>
+            <ul class="service-features">
+              <li>Custom LLM &amp; RAG applications</li>
+              <li>AI chatbots &amp; virtual assistants</li>
+              <li>Predictive analytics &amp; ML models</li>
+              <li>OpenAI, Anthropic &amp; HuggingFace APIs</li>
+            </ul>
+            <a href="solutions.html" class="service-link">Explore &rarr;</a>
+          </div>
+          <div class="service-card-v2 svc-blue">
+            <div class="service-icon-wrap"><span>☁️</span></div>
+            <h3>Cloud &amp; DevOps</h3>
+            <p>We design, automate, and manage cloud infrastructure that is resilient, cost-efficient, and ready for scale — with zero-downtime deploys and full observability.</p>
+            <ul class="service-features">
+              <li>AWS, GCP &amp; Azure architecture</li>
+              <li>Kubernetes &amp; Docker orchestration</li>
+              <li>CI/CD pipeline automation</li>
+              <li>Infrastructure as Code (Terraform)</li>
+            </ul>
+            <a href="solutions.html" class="service-link">Explore &rarr;</a>
+          </div>
+          <div class="service-card-v2 svc-orange">
+            <div class="service-icon-wrap"><span>🎨</span></div>
+            <h3>UI/UX Design</h3>
+            <p>We design digital experiences users love — with research-backed UX, conversion-optimised flows, and polished visual systems that make your brand stand out.</p>
+            <ul class="service-features">
+              <li>User research &amp; journey mapping</li>
+              <li>Figma wireframes &amp; prototyping</li>
+              <li>Design systems &amp; component libraries</li>
+              <li>CRO audits &amp; A/B testing frameworks</li>
+            </ul>
+            <a href="solutions.html" class="service-link">Explore &rarr;</a>
+          </div>
+          <div class="service-card-v2 svc-pink">
+            <div class="service-icon-wrap"><span>📱</span></div>
+            <h3>Mobile Development</h3>
+            <p>We build cross-platform mobile applications that deliver native-level performance with smooth animations, offline support, and tight backend integrations.</p>
+            <ul class="service-features">
+              <li>React Native cross-platform apps</li>
+              <li>iOS &amp; Android deployment</li>
+              <li>Push notifications &amp; offline mode</li>
+              <li>App Store &amp; Play Store publishing</li>
+            </ul>
+            <a href="solutions.html" class="service-link">Explore &rarr;</a>
+          </div>
+          <div class="service-card-v2 svc-green">
+            <div class="service-icon-wrap"><span>⚙️</span></div>
+            <h3>API &amp; Backend Systems</h3>
+            <p>We design fast, secure, and well-documented REST and GraphQL APIs with robust database architecture, third-party integrations, and enterprise-grade reliability.</p>
+            <ul class="service-features">
+              <li>REST &amp; GraphQL API design</li>
+              <li>PostgreSQL, MongoDB &amp; Redis</li>
+              <li>Payment, CRM &amp; webhook integrations</li>
+              <li>Rate limiting, auth &amp; OWASP security</li>
+            </ul>
+            <a href="solutions.html" class="service-link">Explore &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section class="projects">
       <div class="container">
         <h2 class="section-title">Featured Projects</h2>
         <div class="projects-grid">
@@ -127,9 +279,10 @@
       </div>
     </section>
 
+    <!-- Partners & Clients -->
     <section class="partners">
       <div class="container">
-        <h2 class="section-title">Our Partners & Clients</h2>
+        <h2 class="section-title">Our Partners &amp; Clients</h2>
         <p class="section-subtitle">Trusted by leading companies and innovative startups worldwide</p>
         <div class="partners-grid">
           <div class="partner-logo">
@@ -160,6 +313,7 @@
       </div>
     </section>
 
+    <!-- Technology -->
     <section id="technology" class="skills">
       <div class="container">
         <h2 class="section-title">Our Technology</h2>
@@ -167,50 +321,51 @@
           <div class="skill-card">
             <h3>Backend Development</h3>
             <ul>
-              <li>PHP</li>
-              <li>Laravel</li>
-              <li>Python</li>
-              <li>Django</li>
+              <li>PHP &amp; Laravel</li>
+              <li>Python &amp; Django</li>
+              <li>Node.js &amp; Express</li>
+              <li>GraphQL APIs</li>
             </ul>
           </div>
           <div class="skill-card">
             <h3>Frontend Development</h3>
             <ul>
-              <li>HTML/CSS</li>
-              <li>JavaScript</li>
-              <li>React</li>
-              <li>Next.js</li>
+              <li>React &amp; Next.js</li>
+              <li>Vue.js &amp; Nuxt</li>
+              <li>TypeScript</li>
+              <li>Tailwind CSS</li>
             </ul>
           </div>
           <div class="skill-card">
             <h3>Databases</h3>
             <ul>
-              <li>MySQL</li>
               <li>PostgreSQL</li>
               <li>MongoDB</li>
-              <li>SQLite</li>
+              <li>Redis</li>
+              <li>Supabase</li>
             </ul>
           </div>
           <div class="skill-card">
-            <h3>DevOps</h3>
+            <h3>DevOps &amp; Cloud</h3>
             <ul>
-              <li>Docker</li>
-              <li>AWS</li>
-              <li>Git</li>
-              <li>CI/CD</li>
+              <li>AWS &amp; GCP</li>
+              <li>Docker &amp; Kubernetes</li>
+              <li>Terraform (IaC)</li>
+              <li>CI/CD Pipelines</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- About -->
     <section id="about" class="about">
       <div class="container">
         <h2 class="section-title">About Vantade</h2>
         <div class="about-content">
           <div class="about-text">
             <p>Vantade is a freelance technology studio built for ambitious clients who need product velocity, polished design, and measurable business impact. We work as an extension of your team to build digital products that convert users into customers and scale with confidence.</p>
-            <p>Our process blends product strategy, UX-led design, and engineering excellence. We specialize in launching web applications, SaaS products, marketplaces, and mission-critical dashboards with clear ROI.</p>
+            <p>Our process blends product strategy, UX-led design, and engineering excellence. We specialise in launching web applications, SaaS products, marketplaces, and mission-critical dashboards with clear ROI.</p>
             <ul>
               <li>Product planning for growth, retention, and market fit</li>
               <li>Production-ready frontend and backend architecture</li>
@@ -219,129 +374,124 @@
             </ul>
           </div>
           <div class="about-image">
-            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop&q=80" alt="Developer team working together">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop&q=80" alt="Vantade team working together">
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Team Section -->
     <section id="team" class="team">
       <div class="container">
-        <h2 class="section-title">Our Team</h2>
-        <p class="section-subtitle">Experienced freelance developers ready to bring your vision to life</p>
+        <h2 class="section-title">Meet Our Team</h2>
+        <p class="section-subtitle">Expert engineers, designers, and architects ready to bring your vision to life</p>
         <div class="team-grid">
-          <div class="team-card" data-id="1">
-            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&q=80" alt="John Doe">
-            <h3>John Doe</h3>
-            <p class="role">Full Stack Developer</p>
-            <p class="bio">5+ years experience with PHP, Laravel, React</p>
-          </div>
-          <div class="team-card" data-id="2">
-            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&q=80" alt="Sarah Wilson">
-            <h3>Sarah Wilson</h3>
-            <p class="role">Frontend Specialist</p>
-            <p class="bio">4+ years in React, Vue.js, and UI/UX design</p>
-          </div>
-          <div class="team-card" data-id="3">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&q=80" alt="Mike Chen">
-            <h3>Mike Chen</h3>
-            <p class="role">Backend Engineer</p>
-            <p class="bio">6+ years in Python, Django, AWS infrastructure</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="modal profile-modal" id="profileModal" aria-hidden="true">
-        <div class="modal-content">
-          <button class="close-modal" type="button" aria-label="Close profile">&times;</button>
-          <div class="profile-header">
-            <img class="modal-avatar" src="" alt="Profile image">
-            <h3 class="modal-name"></h3>
-            <p class="modal-role"></p>
-          </div>
-          <div class="profile-body">
-            <p class="modal-about"></p>
-            <div class="modal-row">
-              <div>
-                <h4>Core strengths</h4>
-                <ul class="modal-skills"></ul>
-              </div>
-              <div>
-                <h4>Experience</h4>
-                <p class="modal-experience"></p>
+          <a href="team-sarah.html" class="team-card-link">
+            <div class="member-avatar-wrap">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop&q=80" alt="Sarah Johnson">
+              <div class="member-hover-overlay">View Profile &rarr;</div>
+            </div>
+            <div class="member-info">
+              <h3>Sarah Johnson</h3>
+              <p class="member-role">Chief Technology Officer</p>
+              <p class="member-bio">Full-stack architect with 15+ years building enterprise SaaS, cloud systems, and high-performance APIs at scale.</p>
+              <div class="member-tags">
+                <span>Node.js</span><span>AWS</span><span>TypeScript</span><span>System Design</span>
               </div>
             </div>
-            <div class="modal-meta">
-              <span>Rate: <strong class="modal-rate"></strong></span>
-              <span>Availability: <strong>Remote, fast response</strong></span>
+          </a>
+          <a href="team-michael.html" class="team-card-link">
+            <div class="member-avatar-wrap">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&q=80" alt="Michael Chen">
+              <div class="member-hover-overlay">View Profile &rarr;</div>
             </div>
-          </div>
+            <div class="member-info">
+              <h3>Michael Chen</h3>
+              <p class="member-role">Lead AI Engineer</p>
+              <p class="member-bio">AI researcher and ML engineer specialising in LLMs, RAG pipelines, and production-grade machine learning systems.</p>
+              <div class="member-tags">
+                <span>Python</span><span>LLMs</span><span>PyTorch</span><span>MLOps</span>
+              </div>
+            </div>
+          </a>
+          <a href="team-emily.html" class="team-card-link">
+            <div class="member-avatar-wrap">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&q=80" alt="Emily Rodriguez">
+              <div class="member-hover-overlay">View Profile &rarr;</div>
+            </div>
+            <div class="member-info">
+              <h3>Emily Rodriguez</h3>
+              <p class="member-role">UX Design Director</p>
+              <p class="member-bio">Human-centred designer with a track record of lifting conversion rates and crafting beautiful, intuitive digital products.</p>
+              <div class="member-tags">
+                <span>Figma</span><span>UX Research</span><span>Design Systems</span><span>CRO</span>
+              </div>
+            </div>
+          </a>
+          <a href="team-david.html" class="team-card-link">
+            <div class="member-avatar-wrap">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&q=80" alt="David Park">
+              <div class="member-hover-overlay">View Profile &rarr;</div>
+            </div>
+            <div class="member-info">
+              <h3>David Park</h3>
+              <p class="member-role">Cloud Solutions Architect</p>
+              <p class="member-bio">AWS-certified cloud architect who designs resilient, zero-downtime infrastructure for high-traffic platforms and enterprises.</p>
+              <div class="member-tags">
+                <span>AWS</span><span>Kubernetes</span><span>Terraform</span><span>DevSecOps</span>
+              </div>
+            </div>
+          </a>
         </div>
       </div>
     </section>
 
+    <!-- FAQ — always open for SEO -->
     <section class="faq">
       <div class="container">
         <h2 class="section-title">Frequently Asked Questions</h2>
         <div class="faq-grid">
           <div class="faq-item">
-            <button class="faq-question">
-              <span>What services does Vantade provide?</span>
-              <span class="faq-toggle">+</span>
-            </button>
+            <h3 class="faq-question">What services does Vantade provide?</h3>
             <div class="faq-answer">
-              <p>Vantade specializes in web application development, SaaS platforms, custom dashboards, mobile apps, API design, cloud infrastructure, and DevOps solutions. We tailor our services to meet your specific business needs.</p>
+              <p>Vantade specialises in web application development, SaaS platforms, custom dashboards, mobile apps, API design, cloud infrastructure, and DevOps solutions. We tailor our services to meet your specific business needs.</p>
             </div>
           </div>
           <div class="faq-item">
-            <button class="faq-question">
-              <span>How long does a typical project take?</span>
-              <span class="faq-toggle">+</span>
-            </button>
+            <h3 class="faq-question">How long does a typical project take?</h3>
             <div class="faq-answer">
-              <p>Project timelines vary based on scope and complexity. MVP development typically takes 6-12 weeks, while enterprise solutions may take 3-6 months. We provide detailed estimates after understanding your requirements.</p>
+              <p>Project timelines vary based on scope and complexity. MVP development typically takes 6–12 weeks, while enterprise solutions may take 3–6 months. We provide detailed estimates after understanding your requirements.</p>
             </div>
           </div>
           <div class="faq-item">
-            <button class="faq-question">
-              <span>Do you work with distributed teams?</span>
-              <span class="faq-toggle">+</span>
-            </button>
+            <h3 class="faq-question">Do you work with distributed teams?</h3>
             <div class="faq-answer">
               <p>Yes, we are a fully remote team and collaborate seamlessly with clients worldwide. We use modern communication tools and maintain transparent delivery rhythms with regular updates and demos.</p>
             </div>
           </div>
           <div class="faq-item">
-            <button class="faq-question">
-              <span>What technologies do you specialize in?</span>
-              <span class="faq-toggle">+</span>
-            </button>
+            <h3 class="faq-question">What technologies do you specialise in?</h3>
             <div class="faq-answer">
               <p>We work with React, Next.js, Vue.js, Python, Django, PHP, Laravel, Node.js, AWS, Docker, Kubernetes, PostgreSQL, MongoDB, and more. Our team adapts to your tech stack requirements.</p>
             </div>
           </div>
           <div class="faq-item">
-            <button class="faq-question">
-              <span>How do you ensure code quality and security?</span>
-              <span class="faq-toggle">+</span>
-            </button>
+            <h3 class="faq-question">How do you ensure code quality and security?</h3>
             <div class="faq-answer">
               <p>We follow industry best practices including code reviews, automated testing, security audits, OWASP compliance, and continuous integration/deployment. Quality assurance is embedded in every project phase.</p>
             </div>
           </div>
           <div class="faq-item">
-            <button class="faq-question">
-              <span>What is your support and maintenance process?</span>
-              <span class="faq-toggle">+</span>
-            </button>
+            <h3 class="faq-question">What is your support and maintenance process?</h3>
             <div class="faq-answer">
-              <p>We offer post-launch support, bug fixes, performance optimization, and feature enhancements. Custom support plans are available based on your needs and requirements.</p>
+              <p>We offer post-launch support, bug fixes, performance optimisation, and feature enhancements. Custom support plans are available based on your needs and requirements.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Connect -->
     <section class="connect">
       <div class="container">
         <h2 class="section-title">Connect With Vantade</h2>
@@ -375,33 +525,48 @@
       </div>
     </section>
 
+    <!-- Main Contact Form -->
     <section id="contact" class="contact">
       <div class="container">
         <h2 class="section-title">Get In Touch</h2>
         <form class="contact-form" id="mainContactForm">
           <div class="form-group">
-            <label for="name">Name</label>
+            <label for="name">Name *</label>
             <input type="text" id="name" name="name" required>
           </div>
           <div class="form-group">
-            <label for="mobile">Mobile Number</label>
-            <input type="tel" id="mobile" name="mobile" required>
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required>
           </div>
           <div class="form-group">
-            <label for="email">Email (Optional)</label>
-            <input type="email" id="email" name="email">
+            <label for="company">Company</label>
+            <input type="text" id="company" name="company">
           </div>
           <div class="form-group">
-            <label for="technology">Technology</label>
-            <select id="technology" name="technology" required>
-              <option value="">Select Technology</option>
-              <option value="php">PHP/Laravel</option>
-              <option value="python">Python/Django</option>
-              <option value="react">React/Next.js</option>
-              <option value="vue">Vue.js</option>
-              <option value="nodejs">Node.js</option>
-              <option value="devops">DevOps/AWS</option>
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+          <div class="form-group">
+            <label for="service">Service Needed</label>
+            <select id="service" name="service">
+              <option value="">Select Service</option>
+              <option value="web-development">Web Application Development</option>
+              <option value="ai-ml">AI &amp; Machine Learning</option>
+              <option value="cloud-devops">Cloud &amp; DevOps</option>
+              <option value="ui-ux">UI/UX Design</option>
+              <option value="mobile">Mobile Development</option>
+              <option value="api-backend">API &amp; Backend Systems</option>
               <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="budget">Budget Range</label>
+            <select id="budget" name="budget">
+              <option value="">Select Budget</option>
+              <option value="under-5k">Under $5,000</option>
+              <option value="5k-15k">$5,000 – $15,000</option>
+              <option value="15k-50k">$15,000 – $50,000</option>
+              <option value="50k-plus">$50,000+</option>
             </select>
           </div>
           <div class="form-group">
@@ -426,7 +591,7 @@
           <li>Web Applications</li>
           <li>Custom Dashboards</li>
           <li>E-commerce Stores</li>
-          <li>API & Backend Systems</li>
+          <li>API &amp; Backend Systems</li>
           <li>Cloud Automation</li>
         </ul>
       </div>
@@ -445,7 +610,7 @@
         <p><strong>Email:</strong> hello@vantade.com</p>
         <p><strong>Phone:</strong> +1 234 567 890</p>
         <p><strong>Location:</strong> Remote team, global delivery</p>
-        <p><strong>Hours:</strong> Mon - Fri, 9am - 6pm</p>
+        <p><strong>Hours:</strong> Mon – Fri, 9am – 6pm</p>
       </div>
       <div class="footer-newsletter">
         <h3>Newsletter</h3>
@@ -461,7 +626,7 @@
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0/dist/supabase.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

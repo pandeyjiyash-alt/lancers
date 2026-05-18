@@ -1,268 +1,269 @@
-// Mobile Menu Toggle
+// Supabase Configuration
+const SUPABASE_URL = 'https://ujcqwbkxbkvastfkbxas.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVqY3F3Ymt4Ymt2YXN0ZmtieGFzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgwNDY1ODQsImV4cCI6MjA5MzYyMjU4NH0.5PhXC8QKIrAxMXg9uMHufPIb2EtULINLsway4IHu3qQ';
+
+let supabaseClient = null;
+if (typeof window !== 'undefined' && window.supabase) {
+  supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+}
+
+// Notification system
+function injectNotificationStyles() {
+  if (document.getElementById('vantade-notif-styles')) return;
+  const s = document.createElement('style');
+  s.id = 'vantade-notif-styles';
+  s.textContent = `
+    .vantade-notif {
+      position: fixed; top: 24px; right: 24px; z-index: 99999;
+      padding: 16px 24px; border-radius: 12px; color: #fff;
+      font-weight: 600; font-size: 15px; max-width: 360px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+      animation: vNotifIn 0.4s ease forwards;
+    }
+    .vantade-notif.success { background: #0D9488; }
+    .vantade-notif.error   { background: #dc2626; }
+    .vantade-notif.hide    { animation: vNotifOut 0.4s ease forwards; }
+    @keyframes vNotifIn  { from { opacity:0; transform:translateX(80px); } to { opacity:1; transform:translateX(0); } }
+    @keyframes vNotifOut { from { opacity:1; transform:translateX(0);    } to { opacity:0; transform:translateX(80px); } }
+  `;
+  document.head.appendChild(s);
+}
+
+function showNotification(message, type = 'success') {
+  injectNotificationStyles();
+  const el = document.createElement('div');
+  el.className = `vantade-notif ${type}`;
+  el.textContent = message;
+  document.body.appendChild(el);
+  setTimeout(() => {
+    el.classList.add('hide');
+    setTimeout(() => el.remove(), 450);
+  }, 4200);
+}
+
+// Mobile nav toggle
 const navToggle = document.querySelector('.nav-toggle');
-const navList = document.querySelector('.nav-list');
-const navLinks = document.querySelectorAll('.nav-link');
-const smoothScrollLinks = document.querySelectorAll('[data-target]');
+const navList  = document.querySelector('.nav-list');
 
 if (navToggle && navList) {
-  console.log('Mobile menu toggle initialized');
-  
   navToggle.addEventListener('click', (e) => {
     e.stopPropagation();
-    console.log('Toggle clicked');
-    navList.classList.toggle('active');
+    const open = navList.classList.toggle('active');
     navToggle.classList.toggle('active');
+    navToggle.setAttribute('aria-expanded', open);
   });
 
-  smoothScrollLinks.forEach(link => {
-    link.addEventListener('click', (event) => {
-      event.preventDefault();
-      const targetId = link.dataset.target;
-      const targetSection = document.getElementById(targetId);
-      if (!targetSection) return;
-
-      targetSection.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-
-      history.replaceState(null, '', window.location.pathname + window.location.search);
-
-      if (navList.classList.contains('active')) {
-        navList.classList.remove('active');
-        navToggle.classList.remove('active');
-      }
-    });
-  });
-
-  // Close menu when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('.header') && navList.classList.contains('active')) {
-      console.log('Clicked outside, closing menu');
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
       navList.classList.remove('active');
       navToggle.classList.remove('active');
-    }
-  });
-} else {
-  console.log('navToggle or navList not found');
-}
-
-// Navbar Scroll Logic
-const navbar = document.querySelector('.header');
-if (navbar) {
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      navbar.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1)';
-    } else {
-      navbar.style.boxShadow = 'none';
-    }
-  });
-}
-
-// Team Profiles Data
-const teamProfiles = {
-  1: {
-    name: 'John Doe',
-    role: 'Full Stack Developer',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&q=80',
-    about: 'With 5+ years of experience in full-stack development, I specialize in building scalable web applications. I have successfully delivered projects for startups and enterprises across various industries.',
-    skills: ['PHP', 'Laravel', 'React', 'Node.js', 'PostgreSQL', 'Docker', 'AWS'],
-    experience: '5+ years in full-stack development | 50+ projects completed | 200+ happy clients',
-    rate: '$45/hr'
-  },
-  2: {
-    name: 'Sarah Wilson',
-    role: 'Frontend Specialist',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop&q=80',
-    about: 'I create beautiful, responsive, and interactive user interfaces. My expertise lies in modern frontend frameworks and design systems. I focus on delivering exceptional user experiences.',
-    skills: ['React', 'Vue.js', 'HTML/CSS', 'JavaScript', 'Figma', 'UI/UX Design', 'Tailwind CSS'],
-    experience: '4+ years in frontend development | 80+ projects | Expert in responsive design',
-    rate: '$40/hr'
-  },
-  3: {
-    name: 'Mike Chen',
-    role: 'Backend Engineer',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&q=80',
-    about: 'Backend specialist with deep expertise in Python and cloud infrastructure. I build robust, scalable APIs and manage complex database architectures. Performance and security are my priorities.',
-    skills: ['Python', 'Django', 'Flask', 'AWS', 'PostgreSQL', 'Redis', 'Kubernetes'],
-    experience: '6+ years in backend development | Infrastructure architect | 150+ deployments',
-    rate: '$50/hr'
-  },
-  4: {
-    name: 'Emma Garcia',
-    role: 'DevOps Specialist',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&q=80',
-    about: 'DevOps expert focused on automating deployment processes and optimizing infrastructure. I specialize in containerization, orchestration, and setting up CI/CD pipelines for seamless deployments.',
-    skills: ['Docker', 'Kubernetes', 'CI/CD', 'Jenkins', 'AWS', 'Terraform', 'Linux'],
-    experience: '3+ years in DevOps | 30+ successful deployments | Expert in automation',
-    rate: '$55/hr'
-  }
-};
-
-const profileModal = document.getElementById('profileModal');
-const modalAvatar = document.querySelector('.modal-avatar');
-const modalName = document.querySelector('.modal-name');
-const modalRole = document.querySelector('.modal-role');
-const modalAbout = document.querySelector('.modal-about');
-const modalSkills = document.querySelector('.modal-skills');
-const modalExperience = document.querySelector('.modal-experience');
-const modalRate = document.querySelector('.modal-rate');
-const modalClose = document.querySelector('.close-modal');
-
-function openProfile(profileId) {
-  const profile = teamProfiles[profileId];
-  if (!profile || !profileModal) return;
-
-  modalAvatar.src = profile.image;
-  modalAvatar.alt = profile.name;
-  modalName.textContent = profile.name;
-  modalRole.textContent = profile.role;
-  modalAbout.textContent = profile.about;
-  modalSkills.innerHTML = profile.skills.map(skill => `<li>${skill}</li>`).join('');
-  modalExperience.textContent = profile.experience;
-  modalRate.textContent = profile.rate;
-
-  profileModal.style.display = 'block';
-  profileModal.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeProfile() {
-  if (!profileModal) return;
-  profileModal.style.display = 'none';
-  profileModal.setAttribute('aria-hidden', 'true');
-  document.body.style.overflow = '';
-}
-
-document.querySelectorAll('.team-card').forEach(card => {
-  card.addEventListener('click', () => openProfile(card.dataset.id));
-});
-
-if (modalClose) {
-  modalClose.addEventListener('click', closeProfile);
-}
-
-if (profileModal) {
-  profileModal.addEventListener('click', (event) => {
-    if (event.target === profileModal) {
-      closeProfile();
-    }
-  });
-}
-
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape' && profileModal && profileModal.style.display === 'block') {
-    closeProfile();
-  }
-});
-
-// Supabase setup - replace with your own project values
-const supabaseUrl = 'https://ujcqwbkxbkvastfkbxas.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVqY3F3Ymt4Ymt2YXN0ZmtieGFzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgwNDY1ODQsImV4cCI6MjA5MzYyMjU4NH0.5PhXC8QKIrAxMXg9uMHufPIb2EtULINLsway4IHu3qQ';
-const supabaseNotifyFunction = 'notify-contact'; // Optional Supabase Edge Function for email alerts
-const supabaseClient = window.supabase ? supabase.createClient(supabaseUrl, supabaseKey) : null;
-
-async function submitContact(payload) {
-  if (!supabaseClient) {
-    return { error: new Error('Supabase client is not initialized. Update your Supabase URL and anon key.') };
-  }
-
-  const { data, error } = await supabaseClient
-    .from('contacts')
-    .insert([{ ...payload, source: window.location.pathname, created_at: new Date().toISOString() }]);
-
-  if (error) {
-    return { error };
-  }
-
-  if (supabaseNotifyFunction) {
-    const { error: notifyError } = await supabaseClient.functions.invoke(supabaseNotifyFunction, {
-      body: JSON.stringify({
-        subject: 'New contact submission',
-        payload: { ...payload, source: window.location.pathname }
-      })
+      navToggle.setAttribute('aria-expanded', 'false');
     });
+  });
 
-    if (notifyError) {
-      console.warn('Supabase email notification function failed:', notifyError);
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.header') && navList.classList.contains('active')) {
+      navList.classList.remove('active');
+      navToggle.classList.remove('active');
+      navToggle.setAttribute('aria-expanded', 'false');
     }
-  }
-
-  return { data };
+  });
 }
 
-// Contact Form Handling
-const contactForms = document.querySelectorAll('.contact-form-banner, #mainContactForm');
-contactForms.forEach(form => {
-  form.addEventListener('submit', async (e) => {
+// Smooth scroll for data-target links
+document.querySelectorAll('[data-target]').forEach(link => {
+  link.addEventListener('click', (e) => {
+    const id = link.dataset.target;
+    const target = document.getElementById(id);
+    if (!target) return;
     e.preventDefault();
-    const btn = form.querySelector('button');
-    const originalText = btn.innerText;
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    history.replaceState(null, '', window.location.pathname + window.location.search);
+  });
+});
 
-    btn.innerText = 'Sending...';
+// Header shadow on scroll
+const header = document.querySelector('.header');
+if (header) {
+  window.addEventListener('scroll', () => {
+    header.style.boxShadow = window.scrollY > 50
+      ? '0 4px 20px rgba(0,0,0,0.12)'
+      : 'none';
+  }, { passive: true });
+}
+
+// Active nav link highlighting
+function highlightActiveNav() {
+  const sections = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('.nav-link[data-target]');
+  let current = '';
+  sections.forEach(sec => {
+    if (sec.getBoundingClientRect().top <= 130) current = sec.id;
+  });
+  links.forEach(link => link.classList.toggle('active', link.dataset.target === current));
+}
+window.addEventListener('scroll', highlightActiveNav, { passive: true });
+
+// Supabase insert helper
+async function insertContactSubmission(payload) {
+  if (!supabaseClient) {
+    console.warn('Supabase not initialised — check CDN script loaded before script.js');
+    return { error: new Error('Supabase not initialised') };
+  }
+  return await supabaseClient
+    .from('contact_submissions')
+    .insert([{ ...payload, submitted_at: new Date().toISOString() }]);
+}
+
+// Hero quick form
+const heroQuickForm = document.getElementById('heroQuickForm');
+if (heroQuickForm) {
+  heroQuickForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = heroQuickForm.querySelector('button[type="submit"]');
+    const orig = btn.textContent;
+    btn.textContent = 'Sending…';
     btn.disabled = true;
 
-    const formData = new FormData(form);
-    const payload = Object.fromEntries(formData.entries());
-
-    const { error } = await submitContact(payload);
+    const fd = new FormData(heroQuickForm);
+    const { error } = await insertContactSubmission({
+      name:    fd.get('name')    || null,
+      email:   fd.get('email')   || null,
+      message: fd.get('message') || null,
+      source:  window.location.pathname
+    });
 
     if (error) {
-      alert('Something went wrong while sending your message. Please try again.');
+      showNotification('Something went wrong. Please try again.', 'error');
       console.error(error);
     } else {
-      alert('Thank you! Your message has been sent successfully.');
-      form.reset();
+      showNotification('Thank you! We will reach out soon.');
+      heroQuickForm.reset();
+    }
+    btn.textContent = orig;
+    btn.disabled = false;
+  });
+}
+
+// Contact banner inline form
+const contactBannerForm = document.getElementById('contactForm');
+if (contactBannerForm) {
+  contactBannerForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = contactBannerForm.querySelector('button[type="submit"]');
+    const orig = btn.textContent;
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    const fd = new FormData(contactBannerForm);
+    const { error } = await insertContactSubmission({
+      name:     fd.get('name')       || null,
+      phone:    fd.get('mobile')     || null,
+      email:    fd.get('email')      || null,
+      services: fd.get('technology') || null,
+      source:   window.location.pathname
+    });
+
+    if (error) {
+      showNotification('Something went wrong. Please try again.', 'error');
+      console.error(error);
+    } else {
+      showNotification('Thank you! We will be in touch shortly.');
+      contactBannerForm.reset();
+    }
+    btn.textContent = orig;
+    btn.disabled = false;
+  });
+}
+
+// Main contact form (full)
+const mainContactForm = document.getElementById('mainContactForm');
+if (mainContactForm) {
+  mainContactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = mainContactForm.querySelector('button[type="submit"]');
+    const orig = btn.textContent;
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    const fd = new FormData(mainContactForm);
+    const { error } = await insertContactSubmission({
+      name:    fd.get('name')    || null,
+      email:   fd.get('email')   || null,
+      company: fd.get('company') || null,
+      phone:   fd.get('phone')   || null,
+      message: fd.get('message') || null,
+      services: fd.get('service') || null,
+      budget:  fd.get('budget')  || null,
+      source:  window.location.pathname
+    });
+
+    if (error) {
+      showNotification('Something went wrong. Please try again.', 'error');
+      console.error(error);
+    } else {
+      showNotification('Thank you! Your message has been sent.');
+      mainContactForm.reset();
+    }
+    btn.textContent = orig;
+    btn.disabled = false;
+  });
+}
+
+// Newsletter forms
+document.querySelectorAll('.newsletter-form').forEach(form => {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn   = form.querySelector('button[type="submit"]');
+    const input = form.querySelector('input[type="email"]');
+    if (!input || !input.value.trim()) return;
+    const orig = btn.textContent;
+    btn.textContent = 'Subscribing…';
+    btn.disabled = true;
+
+    if (!supabaseClient) {
+      showNotification('Newsletter service unavailable.', 'error');
+      btn.textContent = orig;
+      btn.disabled = false;
+      return;
     }
 
-    btn.innerText = originalText;
+    const { error } = await supabaseClient
+      .from('newsletter_subscribers')
+      .insert([{ email: input.value.trim(), subscribed_at: new Date().toISOString() }]);
+
+    if (error && error.code === '23505') {
+      showNotification('You are already subscribed!');
+    } else if (error) {
+      showNotification('Something went wrong. Please try again.', 'error');
+      console.error(error);
+    } else {
+      showNotification('Thank you for subscribing!');
+      form.reset();
+    }
+    btn.textContent = orig;
     btn.disabled = false;
   });
 });
 
-// Reveal animations on scroll using Intersection Observer
-const observerOptions = {
-    threshold: 0.15,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, observerOptions);
-
-// Add animation classes and observe
-document.querySelectorAll('.project-card, .team-card, .hero-content').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
-    observer.observe(el);
+// Scroll reveal animations
+const revealTargets = document.querySelectorAll(
+  '.project-card, .team-card, .team-card-link, .service-card-v2, .why-card, .skill-card, .partner-logo, .hero-content, .hero-image-wrap'
+);
+revealTargets.forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(28px)';
+  el.style.transition = 'opacity 0.7s ease-out, transform 0.7s ease-out';
 });
 
-// Manual observation callback for the visibility class
-const style = document.createElement('style');
-style.textContent = `
-    .visible {
-        opacity: 1 !important;
-        transform: translateY(0) !important;
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+      revealObserver.unobserve(entry.target);
     }
-`;
-document.head.appendChild(style);
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-// FAQ Toggle Functionality
-const faqItems = document.querySelectorAll('.faq-item');
-faqItems.forEach(item => {
-  const question = item.querySelector('.faq-question');
-  if (question) {
-    question.addEventListener('click', () => {
-      const isActive = item.classList.contains('active');
-      faqItems.forEach(faq => faq.classList.remove('active'));
-      if (!isActive) {
-        item.classList.add('active');
-      }
-    });
-  }
-});
+revealTargets.forEach(el => revealObserver.observe(el));
